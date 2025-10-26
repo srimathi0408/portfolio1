@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srimathi P - AI Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a192f;
+            color: #e6f1ff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: #0a192f;
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: rgba(100, 255, 218, 0.03);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        nav.scrolled {
+            background: rgba(10, 25, 47, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #64ffda;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ccd6f6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #64ffda;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #64ffda;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 8%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-greeting {
+            color: #64ffda;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: #ccd6f6;
+            font-weight: 700;
+            animation: fadeInUp 1s ease 0.1s backwards;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #8892b0;
+            font-weight: 600;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.1rem;
+            color: #8892b0;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: transparent;
+            border: 2px solid #64ffda;
+            color: #64ffda;
+        }
+
+        .btn-primary:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #8892b0;
+            color: #8892b0;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(136, 146, 176, 0.1);
+            border-color: #64ffda;
+            color: #64ffda;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #ccd6f6;
+            font-weight: 600;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        h2::before {
+            content: attr(data-number);
+            color: #64ffda;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(136, 146, 176, 0.3);
+            max-width: 300px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            line-height: 1.8;
+            color: #8892b0;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .about-text strong {
+            color: #ccd6f6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(100, 255, 218, 0.05);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background: rgba(100, 255, 218, 0.08);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .skill-item strong {
+            color: #64ffda;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Education Section */
+        .education-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 165px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #64ffda;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .education-item::after {
+            content: '';
+            position: absolute;
+            left: 170px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 3rem);
+            background: rgba(100, 255, 218, 0.2);
+        }
+
+        .education-item:last-child::after {
+            display: none;
+        }
+
+        .education-year {
+            color: #64ffda;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding-top: 5px;
+        }
+
+        .education-content {
+            background: rgba(17, 34, 64, 0.4);
+            padding: 2rem;
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .education-content:hover {
+            background: rgba(17, 34, 64, 0.6);
+            border-color: rgba(100, 255, 218, 0.3);
+            transform: translateX(10px);
+        }
+
+        .education-content h3 {
+            color: #ccd6f6;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-content h4 {
+            color: #8892b0;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .education-grade {
+            color: #64ffda;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-grade strong {
+            font-size: 1.1rem;
+        }
+
+        .education-content p {
+            color: #8892b0;
+            line-height: 1.7;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(17, 34, 64, 0.8);
+            border-radius: 4px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ccd6f6;
+        }
+
+        .project-card p {
+            color: #8892b0;
+            margin-bottom: 1rem;
+        }
+
+        .project-card strong {
+            color: #64ffda;
+            font-size: 0.85rem;
+        }
+
+        /* Certificates Section */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background: rgba(17, 34, 64, 0.8);
+            border-radius: 4px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.05), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .certificate-card:hover::before {
+            left: 100%;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(100, 255, 218, 0.15);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .certificate-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #ccd6f6;
+        }
+
+        .certificate-card p {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: #8892b0;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: #8892b0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-5px);
+            color: #64ffda;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            width: 70px;
+            height: 70px;
+            background: rgba(100, 255, 218, 0.05);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover .contact-icon {
+            background: rgba(100, 255, 218, 0.1);
+            border-color: #64ffda;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 8%;
+            background: rgba(10, 25, 47, 0.5);
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            color: #8892b0;
+        }
+
+        footer p:first-child {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #112240;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            padding: 3rem;
+            border-radius: 4px;
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            animation: modalIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #8892b0;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #64ffda;
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            color: #ccd6f6;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .modal-content h2::before,
+        .modal-content h2::after {
+            display: none;
+        }
+
+        .modal-content h3 {
+            color: #64ffda;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .modal-content p {
+            color: #8892b0;
+            line-height: 1.8;
+        }
+
+        .modal-content ul {
+            color: #8892b0;
+            margin-left: 1.5rem;
+        }
+
+        .modal-content ul li {
+            margin: 0.5rem 0;
+        }
+
+        /* Certificate Image in Modal */
+        .certificate-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            margin: 1.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-image:hover {
+            border-color: #64ffda;
+            box-shadow: 0 5px 20px rgba(100, 255, 218, 0.3);
+        }
+
+        .upload-prompt {
+            background: rgba(100, 255, 218, 0.05);
+            border: 2px dashed rgba(100, 255, 218, 0.3);
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: #8892b0;
+        }
+
+        .upload-prompt p {
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .hero {
+                padding: 2rem 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .education-item {
+                grid-template-columns: 100px 1fr;
+                gap: 2rem;
+                padding-left: 0;
+            }
+
+            .education-item::before {
+                left: 115px;
+            }
+
+            .education-item::after {
+                left: 120px;
+            }
+
+            .education-content {
+                padding: 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            h2::after {
+                max-width: 150px;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a192f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #233554;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64ffda;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shape" style="width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-shape" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div class="floating-shape" style="width: 80px; height: 80px; top: 80%; left: 20%; animation-delay: 4s;"></div>
+        <div class="floating-shape" style="width: 120px; height: 120px; top: 30%; left: 70%; animation-delay: 6s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">SRIMATHI P</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-greeting">Hi, my name is</p>
+            <h1>Srimathi P</h1>
+            <h2>AI Engineer & Full-Stack Developer</h2>
+            <p class="subtitle">I'm a passionate software developer specializing in Artificial Intelligence and Data Science. I build intelligent systems and scalable web applications that solve real-world problems through data-driven solutions.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 data-number="01.">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm currently pursuing B.Tech in Artificial Intelligence and Data Science at Chettinad College of Engineering and Technology with a CGPA of 8.9. My journey in technology has equipped me with expertise in Full-Stack Development, Machine Learning, and Data Analytics.</p>
+                
+                <p>I have hands-on experience building scalable web applications using the MERN stack, developing predictive models with deep learning frameworks, and creating data visualization dashboards that drive business insights.</p>
+                
+                <p>My recent achievement includes winning 2nd prize at an inter-college project expo for my Stock Forecasting system using LSTM neural networks. I'm passionate about leveraging AI to create impactful solutions.</p>
+                
+                <p><strong>Current Location:</strong> Pudukkottai, Tamil Nadu</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>Languages</strong>
+                    Python, JavaScript, SQL, C, HTML, CSS
+                </div>
+                <div class="skill-item">
+                    <strong>Frameworks</strong>
+                    React.js, Node.js, TensorFlow, Keras
+                </div>
+                <div class="skill-item">
+                    <strong>Databases</strong>
+                    MongoDB, MySQL
+                </div>
+                <div class="skill-item">
+                    <strong>Tools & Platforms</strong>
+                    Git, Power BI, Jupyter, VS Code
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 data-number="02.">Education</h2>
+        <div class="education-timeline">
+            <div class="education-item">
+                <div class="education-year">2022 - 2026</div>
+                <div class="education-content">
+                    <h3>Bachelor of Technology in Artificial Intelligence and Data Science</h3>
+                    <h4>Chettinad College of Engineering and Technology</h4>
+                    <p class="education-grade">CGPA: <strong>8.9/10</strong> (Up to 7th Semester)</p>
+                    <p>Specializing in Machine Learning, Deep Learning, Data Analytics, and Full-Stack Development. Active participant in technical events, hackathons, and project competitions.</p>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-year">2022</div>
+                <div class="education-content">
+                    <h3>Higher Secondary Certificate (HSC)</h3>
+                    <h4>Kalaimagal Matriculation Higher Secondary School</h4>
+                    <p class="education-grade">Percentage: <strong>87.06%</strong></p>
+                    <p>Completed higher secondary education with strong foundation in Mathematics, Physics, Chemistry, and Computer Science.</p>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-year">2020</div>
+                <div class="education-content">
+                    <h3>Secondary School Leaving Certificate (SSLC)</h3>
+                    <h4>Kalaimagal Matriculation Higher Secondary School</h4>
+                    <p class="education-grade">Percentage: <strong>94%</strong></p>
+                    <p>Achieved excellent academic performance with distinction in all core subjects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 data-number="03.">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" onclick="showProjectModal('stock')">
+                <h3>🏆 Stock Forecasting using LSTM</h3>
+                <p>Time-series model predicting MAANG stock prices using LSTM neural networks. Won 2nd prize at inter-college project expo.</p>
+                <br>
+                <strong>Tech:</strong> Python, TensorFlow, LSTM
+            </div>
+            <div class="project-card" onclick="showProjectModal('lung')">
+                <h3>🏥 Lung Disease Detection</h3>
+                <p>CNN-based medical image classification system integrated with Streamlit for easy diagnosis and healthcare support.</p>
+                <br>
+                <strong>Tech:</strong> CNN, Streamlit, Python
+            </div>
+            <div class="project-card" onclick="showProjectModal('marketplace')">
+                <h3>🛍️ Handmade & Craft Marketplace</h3>
+                <p>Full-stack e-commerce platform for handcrafted items with complete user and admin management modules.</p>
+                <br>
+                <strong>Tech:</strong> MERN Stack
+            </div>
+            <div class="project-card" onclick="showProjectModal('farmer')">
+                <h3>📊 Farmer's Market Analysis</h3>
+                <p>Data analytics solution using Power BI to analyze crop pricing and demand, maximizing profit margins for farmers.</p>
+                <br>
+                <strong>Tech:</strong> Power BI, Data Analytics
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <h2 data-number="04.">Certifications & Achievements</h2>
+        <div class="certificates-grid">
+            <div class="certificate-card" onclick="showCertModal('ibm')">
+                <div class="certificate-icon">🎓</div>
+                <h3>Full Stack Developer</h3>
+                <p>IBM (Atroid Technology)</p>
+                <p>1-month internship</p>
+            </div>
+            <div class="certificate-card" onclick="showCertModal('amd')">
+                <div class="certificate-icon">💻</div>
+                <h3>AMD Technical Competency</h3>
+                <p>Shooting Star</p>
+                <p>Technical Certification</p>
+            </div>
+            <div class="certificate-card" onclick="showCertModal('python')">
+                <div class="certificate-icon">🐍</div>
+                <h3>Python Programming</h3>
+                <p>SoloLearn</p>
+                <p>Online Course</p>
+            </div>
+            <div class="certificate-card" onclick="showCertModal('analytics')">
+                <div class="certificate-icon">📈</div>
+                <h3>Data Analytics</h3>
+                <p>Simplilearn</p>
+                <p>Online Course</p>
+            </div>
+            <div class="certificate-card" onclick="showCertModal('frontend')">
+                <div class="certificate-icon">🎨</div>
+                <h3>Front-End Development</h3>
+                <p>Simplilearn</p>
+                <p>Online Course</p>
+            </div>
+            <div class="certificate-card" onclick="showCertModal('html')">
+                <div class="certificate-icon">🌐</div>
+                <h3>HTML Fundamentals</h3>
+                <p>Great Learning</p>
+                <p>Online Course</p>
+            </div>
+            <div class="certificate-card" onclick="showCertModal('hackathon')">
+                <div class="certificate-icon">⚡</div>
+                <h3>24-Hour Hackathon</h3>
+                <p>KPR Institute of Technology</p>
+                <p>Participant</p>
+            </div>
+            <div class="certificate-card" onclick="showCertModal('powerbi')">
+                <div class="certificate-icon">📊</div>
+                <h3>Power BI Workshop</h3>
+                <p>KPR Institute of Technology</p>
+                <p>Workshop Participant</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 data-number="05.">Get In Touch</h2>
+        <div class="contact-content">
+            <p>I'm currently open to new opportunities and interesting projects. Whether you have a question or just want to connect, feel free to reach out!</p>
+            <div class="contact-links">
+                <a href="mailto:srimathipothiyappan@gmail.com" class="contact-link">
+                    <div class="contact-icon">📧</div>
+                    <span>Email</span>
+                </a>
+                <a href="https://linkedin.com/in/srimathi-pothiyappan-882085268" target="_blank" class="contact-link">
+                    <div class="contact-icon">💼</div>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/srimathi0408" target="_blank" class="contact-link">
+                    <div class="contact-icon">💻</div>
+                    <span>GitHub</span>
+                </a>
+                <a href="tel:+919345894602" class="contact-link">
+                    <div class="contact-icon">📱</div>
+                    <span>Phone</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Srimathi P. All rights reserved.</p>
+        <p>Designed & Built with passion</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Project Modal
+        function showProjectModal(project) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            const projectDetails = {
+                stock: {
+                    title: '🏆 Stock Forecasting using LSTM',
+                    description: 'Developed a sophisticated time-series forecasting model that predicts MAANG stock prices using Long Short-Term Memory (LSTM) neural networks. The model analyzes historical stock data patterns and trends to make accurate predictions.',
+                    achievement: 'Won 2nd Prize at Inter-College Project Expo',
+                    tech: 'Python, TensorFlow, Keras, LSTM, Data Preprocessing, Time-Series Analysis',
+                    features: ['Historical data analysis', 'Real-time predictions', 'Visualization dashboards', 'Model performance metrics']
+                },
+                lung: {
+                    title: '🏥 Lung Disease Detection using CNN',
+                    description: 'Created a medical image classification system using Convolutional Neural Networks to detect lung diseases from X-ray images. Integrated with Streamlit for an intuitive user interface accessible to healthcare professionals.',
+                    tech: 'Python, TensorFlow, CNN, Streamlit, Medical Image Processing',
+                    features: ['Image upload and preprocessing', 'Disease classification', 'Confidence scores', 'User-friendly interface']
+                },
+                marketplace: {
+                    title: '🛍️ Handmade & Craft Marketplace',
+                    description: 'Full-stack e-commerce platform connecting artisans with customers. Features include product listings, shopping cart, secure checkout, user authentication, and comprehensive admin dashboard for inventory management.',
+                    tech: 'MongoDB, Express.js, React.js, Node.js (MERN Stack)',
+                    features: ['User authentication', 'Product catalog', 'Shopping cart', 'Admin dashboard', 'Order management']
+                },
+                farmer: {
+                    title: '📊 Farmer\'s Market Profitability Analysis',
+                    description: 'Data analytics solution that helps farmers make informed decisions about crop selection and pricing. Uses Power BI to visualize market trends, demand patterns, and profitability metrics.',
+                    tech: 'Power BI, Data Analytics, SQL, Data Visualization',
+                    features: ['Market trend analysis', 'Demand forecasting', 'Profit margin calculations', 'Interactive dashboards']
+                }
+            };
+            
+            const proj = projectDetails[project];
+            modalBody.innerHTML = `
+                <h2>${proj.title}</h2>
+                <p style="margin: 1.5rem 0; line-height: 1.8;">${proj.description}</p>
+                ${proj.achievement ? `<p style="color: #64ffda; font-weight: bold; margin: 1rem 0;">🏆 ${proj.achievement}</p>` : ''}
+                <h3>Technologies Used</h3>
+                <p style="margin: 1rem 0;">${proj.tech}</p>
+                <h3>Key Features</h3>
+                <ul style="margin: 1rem 0; line-height: 2;">
+                    ${proj.features.map(f => `<li>${f}</li>`).join('')}
+                </ul>
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        // Certificate Modal
+        function showCertModal(cert) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            const certDetails = {
+                ibm: {
+                    title: '🎓 Full Stack Developer Internship',
+                    org: 'IBM (Atroid Technology)',
+                    description: 'Completed an intensive 1-month internship focusing on full-stack web application development. Gained hands-on experience in designing web applications, backend integration, API development, and deployment strategies.',
+                    skills: ['Web Application Design', 'Backend Integration', 'API Development', 'Deployment', 'Agile Methodology'],
+                    image:'sri_IBM.jpg'
+                },
+                amd: {
+                    title: '💻 AMD Technical Competency Certification',
+                    org: 'Shooting Star',
+                    description: 'Achieved technical competency certification from AMD, demonstrating proficiency in advanced computing technologies and technical problem-solving.',
+                    skills: ['Technical Computing', 'Problem Solving', 'Advanced Technologies']
+                },
+                python: {
+                    title: '🐍 Python Programming',
+                    org: 'SoloLearn',
+                    description: 'Comprehensive Python programming course covering fundamentals to advanced concepts including OOP, data structures, and algorithms.',
+                    skills: ['Python Fundamentals', 'OOP', 'Data Structures', 'Algorithms']
+                },
+                analytics: {
+                    title: '📈 Data Analytics',
+                    org: 'Simplilearn',
+                    description: 'In-depth data analytics course covering statistical analysis, data visualization, and business intelligence techniques.',
+                    skills: ['Statistical Analysis', 'Data Visualization', 'Business Intelligence', 'Predictive Analytics']
+                },
+                frontend: {
+                    title: '🎨 Front-End Development',
+                    org: 'Simplilearn',
+                    description: 'Complete front-end development course covering modern web technologies, responsive design, and user interface development.',
+                    skills: ['HTML/CSS', 'JavaScript', 'Responsive Design', 'UI/UX Principles']
+                },
+                html: {
+                    title: '🌐 HTML Fundamentals',
+                    org: 'Great Learning',
+                    description: 'Foundation course in HTML covering semantic markup, web standards, and best practices for web development.',
+                    skills: ['HTML5', 'Semantic Markup', 'Web Standards', 'Accessibility']
+                },
+                hackathon: {
+                    title: '⚡ 24-Hour Hackathon',
+                    org: 'KPR Institute of Technology',
+                    description: 'Participated in an intensive 24-hour hackathon, collaborating with teams to develop innovative solutions under time constraints.',
+                    skills: ['Rapid Prototyping', 'Team Collaboration', 'Problem Solving', 'Time Management']
+                },
+                powerbi: {
+                    title: '📊 Power BI Workshop',
+                    org: 'KPR Institute of Technology',
+                    description: 'Hands-on workshop focused on Power BI for data visualization and business intelligence reporting.',
+                    skills: ['Power BI', 'Data Visualization', 'Dashboard Creation', 'Business Reporting']
+                }
+            };
+            
+            const certificate = certDetails[cert];
+            modalBody.innerHTML = `
+                <h2>${certificate.title}</h2>
+                <h3 style="color: #64ffda; margin: 1rem 0;">${certificate.org}</h3>
+                <p style="margin: 1.5rem 0; line-height: 1.8;">${certificate.description}</p>
+                <h3>Skills Acquired</h3>
+                <ul style="margin: 1rem 0; line-height: 2;">
+                    ${certificate.skills.map(s => `<li>${s}</li>`).join('')}
+                </ul>
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') {
+                closeModal();
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .certificate-card, .skill-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Animate education items
+        document.querySelectorAll('.education-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
